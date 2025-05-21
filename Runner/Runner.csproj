@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<RootNamespace>TaskTrain.Testing</RootNamespace>
+		<Configurations>Debug;Release</Configurations>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<Content Include="../.editorconfig" />
+
+		<None Remove="Directory.Build.props" />
+	</ItemGroup>
+	
+</Project>
