@@ -9,6 +9,7 @@ internal enum TestResult
 internal abstract class TestBase
 {
     public required string Name { get; set; }
+    public string ServiceName { get; set; }
 
     public abstract TestResult Run();
 }

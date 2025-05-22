@@ -1,7 +1,10 @@
-﻿internal static class EntryPoint
+﻿using TaskTrain.Testing;
+
+internal static class EntryPoint
 {
     internal static void Main(string[] args)
     {
-        Console.WriteLine("Test runner");
+        var runner = new TestRunner();
+        runner.Run(args);
     }
 }
