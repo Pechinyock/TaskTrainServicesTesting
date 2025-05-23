@@ -59,9 +59,13 @@ internal sealed class TestRunner
     public void Run(string[] args) 
     {
         Log.Initialize();
-        var test = new DotNetServiceBuildTest("user-hub") { Name = "Debug"
+        var userHubBuildTest = new DotNetServiceBuildTest("user-hub") { Name = "user-hub build tests"
             , RepositoryURL = "https://github.com/Pechinyock/users-hub.git" 
         };
-        test.Run();
+        var apiGatewayBuildTest = new DotNetServiceBuildTest("apiGateway"){ Name = "api gateway build tests"
+            , RepositoryURL = "https://github.com/Pechinyock/api-gateway.git"
+        };
+        userHubBuildTest.Run();
+        apiGatewayBuildTest.Run();
     }
 }

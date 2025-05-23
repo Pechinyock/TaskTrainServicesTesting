@@ -33,10 +33,18 @@ internal sealed class DotNetServiceBuildTest : TestBase
 
                 return true; 
             }),
-            new SingleThreadStage($"verify service project structure"
+            new SingleThreadStage($"verify {serviceName} project structure"
             , () =>
             {
                 if(!IsProjectStructureCorrect(serviceSaveDirectoryPath))
+                    return false;
+
+                return true;
+            }),
+            new SingleThreadStage($"running {serviceName}'s unit tests"
+            , () =>
+            {
+                if(!DotNetHandler.DotNetTest(serviceSaveDirectoryPath))
                     return false;
 
                 return true;
@@ -57,6 +65,8 @@ internal sealed class DotNetServiceBuildTest : TestBase
 
     public override TestResult Run()
     {
+        Log.Warn($"Rinning: {Name}\n");
+
         if(!AreRequiredToolsInstalled())
             return TestResult.Failure;
         const string padding = "    ";
@@ -70,6 +80,7 @@ internal sealed class DotNetServiceBuildTest : TestBase
             }
             Log.Info($"{padding}Success!");
         }
+        Log.Info($"{Name} is done \n");
         return TestResult.Success;
     }
 
